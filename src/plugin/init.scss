@@ -1,0 +1,79 @@
+*,
+:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html {
+  font-size: 62.5%;
+  line-height: 1.15;
+}
+body {
+  font-size: 16px;
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+// 公用样式
+
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+
+.cf:after,
+.cf:before {
+  content: '';
+  display: table;
+}
+.cf:after {
+  clear: both;
+}
+.container {
+  max-width: 1560px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5.26316%;
+  padding-right: 5.26316%;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+.h6 {
+  font-size: 1.8rem;
+  letter-spacing: 0.05em;
+  line-height: 2.4rem;
+}
+.h5,
+.h6 {
+  font-family: Mikro, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
