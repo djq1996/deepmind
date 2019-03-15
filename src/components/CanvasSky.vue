@@ -8,8 +8,8 @@ export default {
     return {
       timer: null,
       $canvas: null,
-      width: 625,
-      height: 0,
+      width: window.innerWidth,
+      height: 625,
       mouseX: -1,
       mouseY: -1,
       pointArry: [],
@@ -18,18 +18,17 @@ export default {
   },
   mounted() {
     this.mainBgFullScreen();
-    window.addEventListener("resize", function() {
-      if (this.timer) {
-        window.cancelAnimationFrame(this.timer);
-      }
-      this.mainBgFullScreen();
-    });
+    //  window.addEventListener("resize", function () {
+    //    if (this.timer) {
+    //      window.cancelAnimationFrame(this.timer);
+    //    }
+    //    this.mainBgFullScreen();
+    //  });
   },
   methods: {
     //初始化canvas全屏
     mainBgFullScreen() {
       this.$canvas = document.querySelector("canvas");
-      this.width = document.querySelector(":root").clientWidth;
       this.zoom = this.getZoom();
       this.$canvas.width = this.width;
       this.$canvas.height = this.height;
@@ -107,22 +106,22 @@ export default {
           that.drawLine(ctx, that.mouseX, that.mouseY, res.x, res.y);
         }
       });
-      // if (window.requestAnimationFrame)
-      //   this.timer = window.requestAnimationFrame(
-      //     this.drawCanvas.bind(window, ctx)
-      //   );
-      // else if (window.msRequestAnimationFrame)
-      //   this.timer = window.msRequestAnimationFrame(
-      //     this.drawCanvas.bind(window, ctx)
-      //   );
-      // else if (window.mozRequestAnimationFrame)
-      //   this.timer = window.mozRequestAnimationFrame(
-      //     this.drawCanvas.bind(window, ctx)
-      //   );
-      // else if (window.webkitRequestAnimationFrame)
-      //   this.timer = window.webkitRequestAnimationFrame(
-      //     this.drawCanvas.bind(window, ctx)
-      //   );
+      if (window.requestAnimationFrame)
+        this.timer = window.requestAnimationFrame(
+          this.drawCanvas.bind(this, ctx)
+        );
+      else if (window.msRequestAnimationFrame)
+        this.timer = window.msRequestAnimationFrame(
+          this.drawCanvas.bind(this, ctx)
+        );
+      else if (window.mozRequestAnimationFrame)
+        this.timer = window.mozRequestAnimationFrame(
+          this.drawCanvas.bind(this, ctx)
+        );
+      else if (window.webkitRequestAnimationFrame)
+        this.timer = window.webkitRequestAnimationFrame(
+          this.drawCanvas.bind(this, ctx)
+        );
     },
     //画线
     drawLine(ctx, p1x, p1y, p2x, p2y) {
@@ -150,7 +149,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 canvas {
   width: 100%;
   height: 626px;

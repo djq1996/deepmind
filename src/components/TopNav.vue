@@ -8,7 +8,9 @@
           <span></span>
         </button>
       </div>
-      <nav class="nav">
+      <nav
+        class="nav site-nav g-md-col-5 g-lg-col-11 g-md-push-1 g-lg-push-1 site-nav--is-home"
+      >
         <ul class="nav-list">
           <li>
             <router-link to="/">Home</router-link>
@@ -23,10 +25,10 @@
             <router-link to="/about">Projects</router-link>
           </li>
           <li>
-            <router-link to="/about">Pricing</router-link>
+            <router-link to="/sky">Pricing</router-link>
           </li>
           <li>
-            <router-link to="/about">For Business</router-link>
+            <router-link to="/test">For Business</router-link>
           </li>
         </ul>
       </nav>

@@ -1,100 +1,141 @@
 <template>
-  <div class="canvas-particles">
+  <div class="canvas-particles" ref="canvasParticles">
     <vue-particles
       color="#245ba0"
       class="particles-custom"
-      :particleOpacity="0.7"
+      :particleOpacity="1"
       :particlesNumber="40"
+      :particleSize="0"
       shapeType="circle"
-      :particleSize="4"
-      linesColor="#dedede"
+      :linesColor="linesColor"
       :linesWidth="0.8"
       :lineLinked="true"
-      :lineOpacity="0.5"
-      :linesDistance="300"
-      :moveSpeed="0.5"
+      :lineOpacity="0.6"
+      :linesDistance="linesDistance"
+      :moveSpeed="0.7"
       :hoverEffect="true"
       hoverMode="grab"
     ></vue-particles>
-    <canvas id="line-custom" class="line-custom"></canvas>
+    <svg
+      class="svg"
+      v-html="svgPoyline"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    ></svg>
   </div>
 </template>
 <script>
 export default {
   name: "about",
-  data: function () {
+  data: function() {
     return {
-      $canvas: null,
-      pointArry: []
+      svg_box: null,
+      width: 0,
+      height: 0,
+      svgPoyline: ""
     };
   },
-  mounted: function () {
-    this.$canvas = document.querySelector("#line-custom");
-    this.$canvas.width = window.innerWidth;
-    this.$canvas.height = 675;
-    const ctx = this.$canvas.getContext("2d");
-    this.pointArry.splice(0, this.pointArry.length);
-    //开始先放200个点
-    for (var i = 0; i < 4; i++) {
-      this.pointArry.push(this.creatPoint());
+  props: {
+    linesColor: {
+      default: "#000"
+    },
+    linesDistance: {
+      default: 300
     }
-    //  window.console.log(this.pointArry);
-    this.drawCanvas(ctx);
-    //  window.console.log(ctx);
+  },
+  mounted: function() {
+    this.svg_box = document.querySelector(".svg");
+    this.width = this.$refs.canvasParticles.offsetWidth;
+    this.height = this.$refs.canvasParticles.offsetHeight;
+    setInterval(() => {
+      this.createSvg();
+    }, 4500);
+    this.createSvg();
   },
   methods: {
-    creatPoint () {
+    createSvg() {
+      const pointArry = [];
+
+      let pinty = Number(Math.random().toFixed(1));
+
+      for (var i = 0; i < 4; i++) {
+        pointArry.push(this.creatPoint(pinty));
+      }
+
+      var svgPonit = [];
+      pointArry.forEach(el => {
+        // console.log(el)
+        var c = "";
+        for (let i = 0; i < el.length; i++) {
+          c += `${el[i].x},${el[i].y} `;
+        }
+        svgPonit.push(c);
+      });
+      this.svgPoyline = "";
+      svgPonit.forEach(el => {
+        this.svgPoyline += `<polyline class="path" points="${el}" >
+          </polyline>
+          `;
+      });
+    },
+    creatPoint(pinty) {
       const point = [];
       let x = 10,
         y = 0;
-      for (let i = 0; i < 15; i++) {
-        x += ~~(Math.random() * 100) * i;
-        y = ~~(Math.random() * 50) * i + 300;
+
+      for (let i = 0; i < 7; i++) {
+        if (i == 6) {
+          x = this.width - 20;
+          y = (this.height / 2) * pinty;
+        } else {
+          x += ~~(Math.random() * 130) * i;
+          y = ~~(Math.random() * 50) * i + 300;
+        }
         point.push({ x: x, y: y });
       }
       // window.console.log(point);
       return point;
-    },
-    drawCanvas (ctx) {
-      this.pointArry.forEach(el => {
-        for (let i = 0; i < el.length; i++) {
-          if (i < el.length - 1) {
-            this.drawLine(ctx, el[i].x, el[i].y, el[i + 1].x, el[i + 1].y);
-          }
-        }
-      });
-      // window.requestAnimationFrame(this.drawCanvas(ctx));
-    },
-    drawLine (ctx, m1, m2, l1, l2) {
-      ctx.strokeStyle = "#1ea9ef";
-      ctx.lineWidth = 1;
-      ctx.save();
-      ctx.beginPath();
-      ctx.moveTo(m1, m2);
-      ctx.lineTo(l1, l2);
-      ctx.stroke();
-      ctx.restore();
     }
   }
 };
 </script>
 <style lang="scss">
-$blue: #245ba0;
 .canvas-particles {
   height: 100%;
-  background: $blue;
   position: relative;
   .particles-custom {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+  .svg {
     position: absolute;
     top: 0;
     width: 100%;
     height: 100%;
   }
-  .line-custom {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
+}
+
+.path {
+  stroke: #1ea9ef;
+  stroke-width: 1.2;
+  fill: none;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: dash 4.5s ease-in-out normal;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 2000;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -2000;
   }
 }
 </style>
