@@ -3,14 +3,14 @@
     <vue-particles
       color="#245ba0"
       class="particles-custom"
-      :particleOpacity="1"
+      :particleOpacity="0"
       :particlesNumber="40"
       :particleSize="0"
       shapeType="circle"
       :linesColor="linesColor"
       :linesWidth="0.8"
       :lineLinked="true"
-      :lineOpacity="0.6"
+      :lineOpacity="0.3"
       :linesDistance="linesDistance"
       :moveSpeed="0.7"
       :hoverEffect="true"
@@ -124,15 +124,21 @@ export default {
   fill: none;
   stroke-dasharray: 2000;
   stroke-dashoffset: 2000;
-  animation: dash 4.5s ease-in-out normal;
+  animation: dash 4s linear normal;
 }
 
 @keyframes dash {
   0% {
     stroke-dashoffset: 2000;
   }
+  25% {
+    stroke-dashoffset: 0;
+  }
   50% {
     stroke-dashoffset: 0;
+  }
+  75% {
+    stroke-dashoffset: -2000;
   }
   100% {
     stroke-dashoffset: -2000;

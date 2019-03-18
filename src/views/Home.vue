@@ -487,6 +487,11 @@ export default {
         height: 100%;
         transition: all 0.7s ease-in-out;
       }
+      h1 {
+        transition: all 0.7s ease-in-out;
+        font-size: 6rem;
+        line-height: 6.8rem;
+      }
     }
   }
   //   hero
