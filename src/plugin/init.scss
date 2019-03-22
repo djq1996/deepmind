@@ -1,7 +1,5 @@
 *,
 :after {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -12,7 +10,9 @@ html {
   line-height: 1.15;
 }
 body {
+   color: #1b1b1b;
   font-size: 16px;
+  margin: 0;
 }
 body,
 html {
@@ -1289,3 +1289,95 @@ p {
     margin-left: 2.94118vw;
   }
 }
+
+
+
+
+.header {
+    position: absolute;
+    height: 62px;
+    width: 100%;
+    transition: all .4s cubic-bezier(.215,.61,.355,1);
+    z-index: 10001
+}
+
+.header:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -ms-transform: none;
+    transform: none;
+    transition: all .4s ease-in-out
+}
+
+.header:not(.has-hero) .burger-btn--wrap,.header:not(.has-hero):after,.menu--is-open .header .burger-btn--wrap,.nav-item--hover .header .burger-btn--wrap,.nav-item--hover .header:after {
+    background-color: #0074c8
+}
+
+.nav-item--hover-research .header .burger-btn--wrap,.nav-item--hover-research .header:after {
+    background-color: #5342a9
+}
+
+.nav-item--hover-applied .header .burger-btn--wrap,.nav-item--hover-applied .header:after {
+    background-color: #00a6ad
+}
+
+.nav-item--hover-ethics-society .header .burger-btn--wrap,.nav-item--hover-ethics-society .header:after {
+    background-color: #8C305C
+}
+
+.nav-item--hover-deepmind .header .burger-btn--wrap,.nav-item--hover-deepmind .header:after {
+    background-color: #0074c8
+}
+
+
+.wrapper:not(.has-hero) {
+    padding-top: 62px;
+}
+@media screen and (min-width: 48em){
+   .wrapper:not(.has-hero) {
+       padding-top: 86px;
+   }
+   .header{
+      height: 86px;
+   }
+}
+
+.nav-mask {
+    background-color: #0074c8;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+    transition: all .4s ease-in-out;
+    z-index: 10000
+}
+
+.nav-item--hover .nav-mask {
+    opacity: .8;
+    visibility: visible
+}
+
+.nav-item--hover-research .nav-mask {
+    background-color: #5342a9
+}
+
+.nav-item--hover-applied .nav-mask {
+    background-color: #00a6ad
+}
+
+.nav-item--hover-ethics-society .nav-mask {
+    background-color: #8C305C
+}
+
+.nav-item--hover-deepmind .nav-mask {
+    background-color: #0074c8
+}
+
+

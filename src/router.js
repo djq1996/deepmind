@@ -1,11 +1,13 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
-import CanvasParticles from "./components/CanvasParticles.vue";
-import CanvasSky from "./components/CanvasSky.vue";
+import Test from "./views/Test.vue";
+import practice from "./views/Practice.vue";
+
 Vue.use(Router);
 
 export default new Router({
+  mode: "history",
   routes: [
     {
       path: "/",
@@ -22,14 +24,14 @@ export default new Router({
         import(/* webpackChunkName: "about" */ "./views/About.vue")
     },
     {
-      path: "/test",
-      name: "test",
-      component: CanvasParticles
+      path: "/practice",
+      name: "practice",
+      component: practice
     },
     {
-      path: "/sky",
-      name: "sky",
-      component: CanvasSky
+      path: "/test",
+      name: "test",
+      component: Test
     }
   ]
 });

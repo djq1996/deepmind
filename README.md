@@ -1,4 +1,4 @@
-# deepmind
+# inuts.ai
 
 ## Project setup
 ```

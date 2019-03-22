@@ -1,21 +1,6 @@
 <template>
   <div class="canvas-particles" ref="canvasParticles">
-    <vue-particles
-      color="#245ba0"
-      class="particles-custom"
-      :particleOpacity="0"
-      :particlesNumber="40"
-      :particleSize="0"
-      shapeType="circle"
-      :linesColor="linesColor"
-      :linesWidth="0.8"
-      :lineLinked="true"
-      :lineOpacity="0.3"
-      :linesDistance="linesDistance"
-      :moveSpeed="0.7"
-      :hoverEffect="true"
-      hoverMode="grab"
-    ></vue-particles>
+    <div :id="canvasId" class="particles-custom"></div>
     <svg
       class="svg"
       v-html="svgPoyline"
@@ -25,32 +10,37 @@
   </div>
 </template>
 <script>
+import "particles.js";
 export default {
   name: "about",
   data: function() {
     return {
-      svg_box: null,
       width: 0,
       height: 0,
       svgPoyline: ""
     };
   },
   props: {
+    canvasId: {
+      default: "particles"
+    },
     linesColor: {
       default: "#000"
     },
     linesDistance: {
-      default: 300
+      default: 200
     }
   },
   mounted: function() {
-    this.svg_box = document.querySelector(".svg");
     this.width = this.$refs.canvasParticles.offsetWidth;
     this.height = this.$refs.canvasParticles.offsetHeight;
-    setInterval(() => {
-      this.createSvg();
-    }, 4500);
+    //  setInterval(() => {
+    //    this.createSvg();
+    //    this.initParticles();
+    //  }, 5000);
+    // this.print(window.particlesJS);
     this.createSvg();
+    this.initParticles();
   },
   methods: {
     createSvg() {
@@ -84,17 +74,126 @@ export default {
         y = 0;
 
       for (let i = 0; i < 7; i++) {
+        let j = i <= 1 ? i : 1;
         if (i == 6) {
-          x = this.width - 20;
-          y = (this.height / 2) * pinty;
+          x = this.width - 10;
+          y = this.height * pinty;
         } else {
-          x += ~~(Math.random() * 130) * i;
-          y = ~~(Math.random() * 50) * i + 300;
+          x += Number(Math.random().toFixed(1)) * (this.width / 5) * j;
+          y = ~~(Math.random() * 60) * i + 300;
         }
-        point.push({ x: x, y: y });
+        point.push({ x: parseInt(x), y: parseInt(y) });
       }
-      // window.console.log(point);
+      // this.print(point);
       return point;
+    },
+    initParticles() {
+      this.print(this.canvasId);
+      window.particlesJS(this.canvasId, {
+        particles: {
+          number: {
+            value: 100,
+            density: {
+              enable: true,
+              value_area: 1000
+            }
+          },
+          color: {
+            value: "#ffffff"
+          },
+          shape: {
+            type: "circle",
+            stroke: {
+              width: 0,
+              color: "#000000"
+            },
+            polygon: {
+              nb_sides: 5
+            }
+          },
+          opacity: {
+            value: 0,
+            random: false,
+            anim: {
+              enable: false,
+              speed: 1,
+              opacity_min: 0.1,
+              sync: false
+            }
+          },
+          size: {
+            value: 3,
+            random: true,
+            anim: {
+              enable: false,
+              speed: 0,
+              size_min: 0.1,
+              sync: false
+            }
+          },
+          line_linked: {
+            enable: true,
+            distance: this.linesDistance,
+            color: this.linesColor,
+            opacity: 0.3,
+            width: 1
+          },
+          move: {
+            enable: true,
+            speed: 2,
+            direction: "none",
+            random: false,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+            attract: {
+              enable: false,
+              rotateX: 600,
+              rotateY: 1200
+            }
+          }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: true,
+              mode: "grab"
+            },
+            onclick: {
+              enable: false,
+              mode: "push"
+            },
+            resize: true
+          },
+          modes: {
+            grab: {
+              distance: 140,
+              line_linked: {
+                opacity: 1
+              }
+            },
+            bubble: {
+              distance: 400,
+              size: 40,
+              duration: 2,
+              opacity: 8,
+              speed: 3
+            },
+            repulse: {
+              distance: 200,
+              duration: 0.4
+            },
+            push: {
+              particles_nb: 4
+            },
+            remove: {
+              particles_nb: 2
+            }
+          }
+        },
+        retina_detect: true
+      });
     }
   }
 };
@@ -120,16 +219,16 @@ export default {
 
 .path {
   stroke: #1ea9ef;
-  stroke-width: 1.2;
+  stroke-width: 1.8;
   fill: none;
-  stroke-dasharray: 2000;
-  stroke-dashoffset: 2000;
-  animation: dash 4s linear normal;
+  stroke-dasharray: 2200;
+  stroke-dashoffset: 2200;
+  animation: dash 5s linear normal;
 }
 
 @keyframes dash {
   0% {
-    stroke-dashoffset: 2000;
+    stroke-dashoffset: 2200;
   }
   25% {
     stroke-dashoffset: 0;
@@ -138,10 +237,10 @@ export default {
     stroke-dashoffset: 0;
   }
   75% {
-    stroke-dashoffset: -2000;
+    stroke-dashoffset: -2200;
   }
   100% {
-    stroke-dashoffset: -2000;
+    stroke-dashoffset: -2200;
   }
 }
 </style>

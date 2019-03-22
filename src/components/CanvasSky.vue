@@ -1,5 +1,10 @@
 <template>
-  <canvas width="1771" height="786"></canvas>
+  <canvas
+    class="canvas-sky"
+    :class="skyName"
+    width="1000"
+    height="400"
+  ></canvas>
 </template>
 <script>
 export default {
@@ -16,6 +21,11 @@ export default {
       zoom: 1 //页面的缩放,
     };
   },
+  props: {
+    skyName: {
+      default: "canvas-sky"
+    }
+  },
   mounted() {
     this.mainBgFullScreen();
     //  window.addEventListener("resize", function () {
@@ -28,7 +38,8 @@ export default {
   methods: {
     //初始化canvas全屏
     mainBgFullScreen() {
-      this.$canvas = document.querySelector("canvas");
+      this.$canvas = document.querySelector("." + this.skyName);
+      window.console.log(this.$canvas);
       this.zoom = this.getZoom();
       this.$canvas.width = this.width;
       this.$canvas.height = this.height;
@@ -42,7 +53,7 @@ export default {
         var ctx = this.$canvas.getContext("2d");
         ctx.fillStyle = "#ffffff";
         ctx.strokeStyle = "rgba(255,255,255,0)";
-        ctx.lineWidth = 0.5 * this.zoom;
+        ctx.lineWidth = 0.8;
         this.drawCanvas(ctx);
       }
       this.$canvas.addEventListener("mousemove", function(ev) {
@@ -55,7 +66,7 @@ export default {
     creatPoint() {
       var xsKew = (Math.random() - 0.5) * this.zoom; //x轴偏移量
       var ysKew = (Math.random() - 0.5) * this.zoom; //y轴偏移量
-      var r = ~~(Math.random() * 1 * this.zoom);
+      var r = ~~(Math.random() * 4 * this.zoom);
       var x = ~~(Math.random() * (this.width - r)) + 2 * r;
       var y = ~~(Math.random() * (this.height - r)) + 2 * r;
       var point = {
@@ -88,7 +99,7 @@ export default {
           res.y = res.y + res.ysKew;
         }
         //绘制点
-        // ctx.arc(res.x, res.y, res.r, 0, 2 * Math.PI);
+        //   ctx.arc(res.x, res.y, res.r, 0, 2 * Math.PI);
         ctx.arc(res.x, res.y, 0, 0, 2 * Math.PI);
         ctx.fill();
         that.pointArry.forEach(function(el, index) {
@@ -128,7 +139,7 @@ export default {
       var xDistance = Math.abs(p1x - p2x); //计算两点间的x距离
       var yDistance = Math.abs(p1y - p2y); //计算两点间的y距离
       var distance = Math.sqrt(xDistance * xDistance + yDistance * yDistance);
-      if (distance <= 120) {
+      if (distance <= 300) {
         ctx.fillStyle = "#ffffff"; //解决窗口缩放时圆点变黑
         ctx.strokeStyle = "rgba(221,221,221," + (1 - distance / 120) + ")";
         ctx.save();
@@ -144,15 +155,9 @@ export default {
       var zoom;
       zoom = window.innerWidth / window.screen.width;
       window.console.log(zoom);
-      return zoom;
+      return 1;
     }
   }
 };
 </script>
-<style lang="scss" scoped>
-canvas {
-  width: 100%;
-  height: 626px;
-  background: #245ba0;
-}
-</style>
+<style lang="scss" scoped></style>

@@ -3,15 +3,28 @@
     <!-- banner -->
     <section class="banner">
       <div class="particles" v-if="toggleParticles">
-        <canvas-particles lines-color="#fff"></canvas-particles>
+        <canvas-particles
+          canvas-id="particles1"
+          lines-color="#fff"
+        ></canvas-particles>
       </div>
       <swiper class="swiper-custom" :options="swiperOption" ref="mySwiper">
         <!-- slides -->
-        <swiper-slide v-for="i in 4" :key="i">
+        <swiper-slide>
           <article class="container cf story-hero--item-text">
             <header class="g-sm-col-4 g-md-col-5 g-lg-col-8 g-lg-push-1">
               <h1 class="h1 white">
-                {{ i + " ." }} Better Language Models and Their Implications.
+                Integrated AI Product Solutions
+              </h1>
+            </header>
+          </article>
+        </swiper-slide>
+        <swiper-slide>
+          <article class="container cf story-hero--item-text">
+            <header class="g-sm-col-4 g-md-col-5 g-lg-col-8 g-lg-push-1">
+              <h1 class="h1 white">
+                inuts.ai provides artificial intelligence algorithm and
+                efficiency improvement services for enterprises
               </h1>
             </header>
           </article>
@@ -22,7 +35,7 @@
       </span>
     </section>
     <!-- MILESTONES -->
-    <section class="hero-info section--block show">
+    <!-- <section class="hero-info section--block show">
       <div class="cf container">
         <header class="section-header g-sm-col-4 g-lg-col-11 g-lg-push-1">
           <h1 class="uppercase h6">Milestones</h1>
@@ -108,7 +121,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- LATEST NEWS -->
     <section class="latest-news">
       <div class="cf container">
@@ -122,7 +135,8 @@
           <header class="featured-block-header g-md-col-5 g-lg-col-9 show">
             <h1 class="heading heading--research h1">
               <a class="underline" href
-                >THE SMARTEST WAY TO Learn Data Science Online</a
+                >Providing Integrated Artificial Intelligence Product
+                Technological Innovation Service for Enterprises</a
               >
             </h1>
           </header>
@@ -135,10 +149,14 @@
             class="featured-block-info g-sm-col-4 g-md-col-5 g-lg-col-5 g-md-push-1 g-lg-push-1"
           >
             <p>
-              The skills people and businesses need to succeed are changing. No
-              matter where you are in your career or what field you work in, you
-              will need to understand the language of data. With DataCamp, you
-              learn data science today and apply it tomorrow.
+              For enterprises whose core competitiveness and resources depend
+              continuously on advanced IT technology, we will deeply understand
+              the business of enterprises, help enterprises plan, design and
+              complete online product artificial intelligence model. We use the
+              ability of professional AI to build customized solutions to
+              enhance the capability of AI products for every enterprise that
+              has served, so as to help enterprises keep the leading edge in the
+              increasingly fierce competition.
             </p>
             <footer class="cf featured-block-author">
               <img class="left featured-block-author-profile" src alt />
@@ -167,8 +185,9 @@
             <div class="cf three-up--info">
               <header class="three-up--header left">
                 <h1 class="heading heading--research h6">
-                  If you've never done a DataCamp project, this is the place to
-                  start! If you've never done a DataCamp project
+                  We will use artificial intelligence technology to help
+                  enterprises improve operational efficiency, improve service
+                  quality and save operating costs.
                 </h1>
               </header>
               <footer class="g-sm-col-4 three-up--footer">
@@ -191,8 +210,10 @@
             <div class="cf three-up--info">
               <header class="three-up--header left">
                 <h1 class="heading heading--research h6">
-                  If you've never done a DataCamp project, this is the place to
-                  start! If you've never done a DataCamp project
+                  Through understanding the existing product operation process
+                  and status of enterprises, help enterprises to build
+                  artificial intelligence model machine learning, so that the
+                  product life cycle of enterprises continues to extend.
                 </h1>
               </header>
               <footer class="g-sm-col-4 three-up--footer">
@@ -215,8 +236,11 @@
             <div class="cf three-up--info">
               <header class="three-up--header left">
                 <h1 class="heading heading--research h6">
-                  If you've never done a DataCamp project, this is the place to
-                  start! If you've never done a DataCamp project
+                  For any large-scale enterprise, it is very important to make
+                  efficient use of artificial intelligence technology. For
+                  today's enterprises, cost savings, efficiency improvement,
+                  product liquidity and life cycle improvement has become the
+                  most important part of the improvement.
                 </h1>
               </header>
               <footer class="g-sm-col-4 three-up--footer">
@@ -235,7 +259,7 @@
     >
       <canvas-particles
         lines-color="#1ea9ef"
-        :lines-distance="Number(500)"
+        :lines-distance="Number(300)"
         class="at-deepmind-canvas"
       ></canvas-particles>
       <div class="cf container">
@@ -313,76 +337,6 @@
         </article>
       </div>
     </section>
-    <!-- Footer -->
-    <section class="footer bg-grey-light">
-      <section class="cf container">
-        <header class="g-sm-col-4 g-lg-col-10 g-lg-push-1">IadBrain</header>
-        <nav class="g-sm-col-4 g-md-col-3 g-lg-col-4 g-lg-push-1">
-          <ul class="cf unstyled footer--nav-list">
-            <li class="g-sm-col-4 footer--nav-list--item faux-link-block">
-              <a class="no-underline grey-dark p--module" href="void:;"
-                >Research</a
-              >
-              <a class="faux-link-block--link" href="void:;">Research</a>
-            </li>
-
-            <li class="g-sm-col-4 footer--nav-list--item faux-link-block">
-              <a class="no-underline grey-dark p--module" href="void:;"
-                >Applied</a
-              >
-              <a class="faux-link-block--link" href="void:;">Applied</a>
-            </li>
-
-            <li class="g-sm-col-4 footer--nav-list--item faux-link-block">
-              <a class="no-underline grey-dark p--module" href="void:;"
-                >News &amp; Blog</a
-              >
-              <a class="faux-link-block--link" href="void:;">News &amp; Blog</a>
-            </li>
-
-            <li class="g-sm-col-4 footer--nav-list--item faux-link-block">
-              <a class="no-underline grey-dark p--module" href="void:;"
-                >About Us</a
-              >
-              <a class="faux-link-block--link" href="void:;">About Us</a>
-            </li>
-
-            <li class="g-sm-col-4 footer--nav-list--item faux-link-block">
-              <a class="no-underline grey-dark p--module" href="void:;"
-                >Careers</a
-              >
-              <a class="faux-link-block--link" href="void:;">Careers</a>
-            </li>
-          </ul>
-        </nav>
-        <div class="g-sm-col-4 g-md-col-2 g-lg-col-5 right">
-          <ul class="cf unstyled footer--nav-list">
-            <li class="g-sm-col-4 footer--nav-list--item-secondary">
-              <a class="no-underline grey-mid p--module" href="void:;">Press</a>
-            </li>
-
-            <li class="g-sm-col-4 footer--nav-list--item-secondary">
-              <a class="no-underline grey-mid p--module" href="void:;"
-                >Terms and Conditions</a
-              >
-            </li>
-
-            <li class="g-sm-col-4 footer--nav-list--item-secondary">
-              <a class="no-underline grey-mid p--module" href="void:;"
-                >Privacy Policy –&nbsp;Updated</a
-              >
-            </li>
-
-            <li class="g-sm-col-4 footer--nav-list--item-secondary">
-              <a class="no-underline grey-mid p--module" href="void:;"
-                >Alphabet Inc</a
-              >
-            </li>
-          </ul>
-          <p class="grey-mid-light p--module">© 2019 IADbrain</p>
-        </div>
-      </section>
-    </section>
   </main>
 </template>
 
@@ -403,10 +357,12 @@ export default {
       toggleParticles: true,
       workingDeepmindHeight: 0,
       swiperOption: {
-        autoplay: true,
-        delay: 5000,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false
+        },
         loop: true,
-        speed: 1000,
+        //   speed: 600,
         //   effect: "fade",
         on: {
           slideChangeTransitionStart: function() {
@@ -424,6 +380,7 @@ export default {
     }
   },
   mounted() {
+    window.addEventListener("scroll", this.menu);
     //  setTimeout(() => {
     //    this.workingDeepmindHeight =
     //      this.$refs.workingDeepmind.offsetHeight + "px";
@@ -433,7 +390,13 @@ export default {
     //  this.swiper.slideTo(3, 1000, false);
     //  this.print(this.$refs.djq);
   },
-  methods: {}
+  methods: {
+    menu() {
+      this.scroll =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      window.console.log(this.scroll);
+    }
+  }
 };
 </script>
 <style lang="scss">
@@ -450,6 +413,10 @@ export default {
       top: 0;
       z-index: 2;
     }
+    .swiper-container {
+      z-index: 4;
+    }
+
     .gradient-wrap {
       pointer-events: none;
       position: absolute;
@@ -492,6 +459,19 @@ export default {
         font-size: 6rem;
         line-height: 6.8rem;
       }
+      @media screen and (max-width: 47.9375em) {
+        h1 {
+          font-size: 3.5rem;
+          line-height: 4rem;
+        }
+      }
+
+      // @media screen and (max-width: 63.9375em) {
+      //   h1 {
+      //     font-size: 5rem;
+      //     line-height: 5.6rem;
+      //   }
+      // }
     }
   }
   //   hero
@@ -783,38 +763,6 @@ export default {
         margin-left: 0;
         width: 77%;
       }
-    }
-  }
-  //   footer
-  .footer {
-    .footer--nav-list--item:not(:last-of-type) {
-      border-bottom: 1px solid rgba(16, 72, 112, 0.1);
-    }
-    .footer--nav-list--item:not(:first-of-type) {
-      padding-top: 14px;
-    }
-    .footer--nav-list--item {
-      padding-bottom: 14px;
-      transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-    .faux-link-block {
-      position: relative;
-    }
-    .faux-link-block--link {
-      bottom: 0;
-      display: block;
-      left: 0;
-      position: absolute;
-      overflow: hidden;
-      right: 0;
-      text-indent: 200%;
-      top: 0;
-      visibility: visible;
-      white-space: nowrap;
-      z-index: 10000;
-    }
-    .footer--nav-list--item-secondary:not(:last-of-type) {
-      margin-bottom: -2px;
     }
   }
 }
