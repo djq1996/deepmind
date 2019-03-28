@@ -56,7 +56,9 @@ a {
   padding-left: 5.26316%;
   padding-right: 5.26316%;
 }
-
+.overlay--is-open {
+    overflow: hidden;
+}
 .uppercase {
   text-transform: uppercase;
 }
@@ -69,6 +71,9 @@ a {
 }
 .right {
   float: right;
+}
+.relative {
+    position: relative;
 }
 .g-sm-col-1 {
   width: 21.05263%;
@@ -231,9 +236,6 @@ p {
 }
 .bg-blue-4 {
   background-color: #d9eaf6;
-}
-.bg-grey-light {
-  background-color: #eff0f1;
 }
 .grey-dark {
   color: #1b1b1b;

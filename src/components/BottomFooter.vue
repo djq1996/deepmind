@@ -2,41 +2,39 @@
   <!-- Footer -->
   <section class="footer bg-grey-light">
     <section class="cf container">
-      <header class="g-sm-col-4 g-lg-col-10 g-lg-push-1">Inuts.ai</header>
+      <!-- <header class="g-sm-col-4 g-lg-col-10 g-lg-push-1">Inuts.ai</header> -->
       <nav class="g-sm-col-4 g-md-col-3 g-lg-col-4 g-lg-push-1">
         <ul class="cf unstyled footer--nav-list">
           <li class="g-sm-col-4 footer--nav-list--item faux-link-block">
-            <a class="no-underline grey-dark p--module" href="void:;">Home</a>
-            <a class="faux-link-block--link" href="void:;">Home</a>
+            <a class="no-underline grey-dark p--module" href="void:;">{{
+              $t("lang.menu.solutions")
+            }}</a>
+            <a class="faux-link-block--link" href="void:;">{{
+              $t("lang.menu.solutions")
+            }}</a>
           </li>
 
           <li class="g-sm-col-4 footer--nav-list--item faux-link-block">
-            <a class="no-underline grey-dark p--module" href="void:;"
-              >Solutions</a
-            >
-            <a class="faux-link-block--link" href="void:;">Solutions</a>
+            <a class="no-underline grey-dark p--module" href="void:;">{{
+              $t("lang.menu.cases")
+            }}</a>
+            <a class="faux-link-block--link" href="void:;">{{
+              $t("lang.menu.cases")
+            }}</a>
           </li>
 
           <li class="g-sm-col-4 footer--nav-list--item faux-link-block">
-            <a class="no-underline grey-dark p--module" href="void:;">Cases</a>
-            <a class="faux-link-block--link" href="void:;">Cases</a>
-          </li>
-
-          <li class="g-sm-col-4 footer--nav-list--item faux-link-block">
-            <a class="no-underline grey-dark p--module" href="void:;"
-              >For business</a
-            >
-            <a class="faux-link-block--link" href="void:;">For business</a>
-          </li>
-
-          <li class="g-sm-col-4 footer--nav-list--item faux-link-block">
-            <a class="no-underline grey-dark p--module" href="void:;">About</a>
-            <a class="faux-link-block--link" href="void:;">About</a>
+            <a class="no-underline grey-dark p--module" href="void:;">{{
+              $t("lang.menu.forBusiness")
+            }}</a>
+            <a class="faux-link-block--link" href="void:;">{{
+              $t("lang.menu.forBusiness")
+            }}</a>
           </li>
         </ul>
       </nav>
       <div class="g-sm-col-4 g-md-col-2 g-lg-col-5 right">
-        <ul class="cf unstyled footer--nav-list">
+        <!-- <ul class="cf unstyled footer--nav-list">
           <li class="g-sm-col-4 footer--nav-list--item-secondary">
             <a class="no-underline grey-mid p--module" href="void:;">Press</a>
           </li>
@@ -58,7 +56,7 @@
               >Alphabet Inc</a
             >
           </li>
-        </ul>
+        </ul> -->
         <p class="grey-mid-light p--module">
           AI Wish You Take Off@2019 inuts.ai
         </p>

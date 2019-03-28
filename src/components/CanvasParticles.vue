@@ -11,6 +11,7 @@
 </template>
 <script>
 import "particles.js";
+import { randomMinMax } from "@/plugin/util";
 export default {
   name: "about",
   data: function() {
@@ -34,10 +35,10 @@ export default {
   mounted: function() {
     this.width = this.$refs.canvasParticles.offsetWidth;
     this.height = this.$refs.canvasParticles.offsetHeight;
-    //  setInterval(() => {
-    //    this.createSvg();
-    //    this.initParticles();
-    //  }, 5000);
+    setInterval(() => {
+      this.createSvg();
+      // this.initParticles();
+    }, 5000);
     // this.print(window.particlesJS);
     this.createSvg();
     this.initParticles();
@@ -46,10 +47,10 @@ export default {
     createSvg() {
       const pointArry = [];
 
-      let pinty = Number(Math.random().toFixed(1));
-
+      let randomOne = Number(Math.random().toFixed(1));
+      let randomMinMaxNum = randomMinMax(10, this.height - 100);
       for (var i = 0; i < 4; i++) {
-        pointArry.push(this.creatPoint(pinty));
+        pointArry.push(this.creatPoint(randomOne, randomMinMaxNum));
       }
 
       var svgPonit = [];
@@ -68,7 +69,7 @@ export default {
           `;
       });
     },
-    creatPoint(pinty) {
+    creatPoint(randomOne, randomMinMaxNum) {
       const point = [];
       let x = 10,
         y = 0;
@@ -77,10 +78,10 @@ export default {
         let j = i <= 1 ? i : 1;
         if (i == 6) {
           x = this.width - 10;
-          y = this.height * pinty;
+          y = this.height * randomOne;
         } else {
           x += Number(Math.random().toFixed(1)) * (this.width / 5) * j;
-          y = ~~(Math.random() * 60) * i + 300;
+          y = ~~(Math.random() * 60) * i + randomMinMaxNum;
         }
         point.push({ x: parseInt(x), y: parseInt(y) });
       }
@@ -136,7 +137,7 @@ export default {
             distance: this.linesDistance,
             color: this.linesColor,
             opacity: 0.3,
-            width: 1
+            width: 0.8
           },
           move: {
             enable: true,
@@ -219,28 +220,35 @@ export default {
 
 .path {
   stroke: #1ea9ef;
-  stroke-width: 1.8;
+  stroke-width: 1.4;
   fill: none;
-  stroke-dasharray: 2200;
-  stroke-dashoffset: 2200;
-  animation: dash 5s linear normal;
+  opacity: 0.6;
+  stroke-dasharray: 3200;
+  stroke-dashoffset: 3200;
+  animation: dash 5s linear;
+  //   animation-fill-mode: forwards;
 }
 
 @keyframes dash {
   0% {
-    stroke-dashoffset: 2200;
-  }
-  25% {
-    stroke-dashoffset: 0;
+    stroke-dashoffset: 3200;
   }
   50% {
     stroke-dashoffset: 0;
   }
   75% {
-    stroke-dashoffset: -2200;
+    stroke-dashoffset: -3200;
   }
   100% {
-    stroke-dashoffset: -2200;
+    stroke-dashoffset: -3200;
   }
 }
+// @keyframes dash {
+//   0% {
+//     stroke-dashoffset: 3200;
+//   }
+//   100% {
+//     stroke-dashoffset: 0;
+//   }
+// }
 </style>
